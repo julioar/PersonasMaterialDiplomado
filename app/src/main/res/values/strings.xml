@@ -6,4 +6,6 @@
     <string name="guardar">Guardar</string>
     <string name="limpiar">Limpiar</string>
     <string name="crear">Crear Personas</string>
+
+    <string name="mensaje_guardado">Persona Guardada Exitosamente!</string>
 </resources>

@@ -1,5 +1,6 @@
 package com.example.android.personasmaterialdiplomado;
 
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -20,6 +21,7 @@ public class Principal extends AppCompatActivity {
     private Resources res;
     private AdaptadorPersona adapter;
     private LinearLayoutManager llm;
+    private Intent i;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,10 +32,8 @@ public class Principal extends AppCompatActivity {
         listado = (RecyclerView)findViewById(R.id.lstOpciones);
 
         res = this.getResources();
-        personas = new ArrayList<>();
-        personas.add(new Persona(R.drawable.images,"Roberto","Morales"));
-        personas.add(new Persona(R.drawable.images2,"Manuel","Morales"));
-        personas.add(new Persona(R.drawable.images2,"Sergio","Morales"));
+        personas = Datos.obtenerPersonas();
+
 
         llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayoutManager.VERTICAL);
@@ -48,8 +48,8 @@ public class Principal extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+              i = new Intent(Principal.this,CrearPersonas.class);
+                startActivity(i);
             }
         });
     }
