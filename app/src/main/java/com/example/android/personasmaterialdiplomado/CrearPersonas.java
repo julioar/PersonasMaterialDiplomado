@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -48,6 +50,7 @@ public class CrearPersonas extends AppCompatActivity {
 
        iniciar_fotos();
 
+
     }
 
     public void iniciar_fotos(){
@@ -58,17 +61,21 @@ public class CrearPersonas extends AppCompatActivity {
     }
 
     public void guadar(View v){
-        Persona p = new Persona(Metodos.fotoAleatoria(fotos), txtCedula.getText().toString(),
-                txtNombre.getText().toString(),txtApellido.getText().toString(),sexo.getSelectedItemPosition());
-        p.guardar();
-        Snackbar.make(v, res.getString(R.string.mensaje_guardado), Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show();
-        limpiar();
+
+        if(validar()) {
+            Persona p = new Persona(Metodos.fotoAleatoria(fotos), txtCedula.getText().toString(),
+                    txtNombre.getText().toString(), txtApellido.getText().toString(), sexo.getSelectedItemPosition());
+            p.guardar();
+            Snackbar.make(v, res.getString(R.string.mensaje_guardado), Snackbar.LENGTH_LONG)
+                    .setAction("Action", null).show();
+            limpiar();
+        }
     }
 
     public void limpiar(View v){
         limpiar();
     }
+
     public void limpiar(){
         txtCedula.setText("");
         txtNombre.setText("");
@@ -82,5 +89,26 @@ public class CrearPersonas extends AppCompatActivity {
         finish();
         Intent i = new Intent(CrearPersonas.this,Principal.class);
         startActivity(i);
+    }
+
+    public boolean validar(){
+        if (validar_aux(txtCedula,cajaCedula)) return false;
+        else  if (validar_aux(txtNombre,cajaNombre)) return false;
+        else  if (validar_aux(txtApellido,cajaApellido)) return false;
+        else if (Metodos.exitencia_persona(Datos.obtenerPersonas(),txtCedula.getText().toString())){
+            txtCedula.setError(res.getString(R.string.persona_existente_error));
+            txtCedula.requestFocus();
+            return false;
+        }
+        return true;
+    }
+
+    public boolean validar_aux(TextView t, TextInputLayout ct){
+        if (t.getText().toString().isEmpty()){
+           t.requestFocus();
+            t.setError(res.getString(R.string.no_vacio_error));
+            return true;
+        }
+        return false;
     }
 }

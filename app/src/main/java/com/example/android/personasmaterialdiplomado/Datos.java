@@ -9,12 +9,23 @@ import java.util.ArrayList;
 public class Datos {
     private static ArrayList<Persona> personas = new ArrayList();
 
-    public static void guardarPersona(Persona p){
+    public static void guardarPersona(Persona p) {
         personas.add(p);
     }
 
-    public static ArrayList<Persona> obtenerPersonas(){
+    public static ArrayList<Persona> obtenerPersonas() {
         return personas;
+    }
+
+    public static boolean eliminarPersona(Persona p){
+        for (int i = 0; i <personas.size() ; i++) {
+            if(p.getCedula().equals(personas.get(i).getCedula())){
+                personas.remove(i);
+                return true;
+            }
+        }
+        return false;
+
     }
 }
 

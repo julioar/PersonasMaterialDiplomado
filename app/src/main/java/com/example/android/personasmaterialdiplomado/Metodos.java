@@ -14,4 +14,18 @@ public class Metodos {
         fotoSeleccionada = r.nextInt(fotos.size());
         return fotos.get(fotoSeleccionada);
     }
+
+    public static boolean exitencia_persona(ArrayList<Persona> personas, String cedula){
+        for (int i = 0; i <personas.size() ; i++) {
+            if(personas.get(i).getCedula().equals(cedula)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+
+
+
 }
