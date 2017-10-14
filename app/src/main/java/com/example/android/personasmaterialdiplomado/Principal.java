@@ -15,7 +15,7 @@ import android.view.MenuItem;
 
 import java.util.ArrayList;
 
-public class Principal extends AppCompatActivity {
+public class Principal extends AppCompatActivity implements  AdaptadorPersona.OnPersonaClickListener{
     private RecyclerView listado;
     private ArrayList<Persona> personas;
     private Resources res;
@@ -38,7 +38,7 @@ public class Principal extends AppCompatActivity {
         llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayoutManager.VERTICAL);
 
-        adapter = new AdaptadorPersona(this.getApplicationContext(),personas);
+        adapter = new AdaptadorPersona(this.getApplicationContext(),personas,this);
 
         listado.setLayoutManager(llm);
         listado.setAdapter(adapter);
@@ -54,4 +54,17 @@ public class Principal extends AppCompatActivity {
         });
     }
 
-   }
+    @Override
+    public void onPersonaClick(Persona p) {
+        Intent i = new Intent(Principal.this, DetallePersona.class);
+        Bundle b = new Bundle();
+        b.putString("cedula",p.getCedula());
+        b.putString("nombre",p.getNombre());
+        b.putString("apellido",p.getApellido());
+        b.putInt("sexo",p.getSexo());
+        b.putInt("foto",p.getFoto());
+
+        i.putExtra("datos",b);
+        startActivity(i);
+    }
+}
