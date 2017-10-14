@@ -18,6 +18,7 @@ public class Persona {
         this.apellido=apellido;
         this.sexo=sexo;
     }
+
     public Persona(int foto, String nombre, String apellido){
         this.foto=foto;
         this.cedula="";

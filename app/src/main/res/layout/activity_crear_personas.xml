@@ -20,6 +20,18 @@
         android:textStyle="bold" />
 
     <android.support.design.widget.TextInputLayout
+        android:id="@+id/cajaCedula"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/txtCedula"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/cedula" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
         android:id="@+id/cajaNombre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -29,6 +41,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/nombre" />
+
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -43,6 +56,11 @@
             android:hint="@string/apellido" />
 
     </android.support.design.widget.TextInputLayout>
+
+    <Spinner
+        android:id="@+id/cmbSexo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -65,6 +83,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/limpiar" />
+
     </LinearLayout>
 
 </LinearLayout>
