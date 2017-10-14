@@ -25,6 +25,7 @@ public class DetallePersona extends AppCompatActivity {
     private TextView ced,nomb,app,sex;
     private String [] opc;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,9 +96,26 @@ public class DetallePersona extends AppCompatActivity {
 
 
     }
+
+    public void onModificarClick(View v) {
+        Intent i = new Intent(DetallePersona.this, EditarPersona.class);
+        Bundle b = new Bundle();
+        b.putString("cedula",cedula);
+        b.putString("nombre",nombre);
+        b.putString("apellido",apellido);
+        b.putInt("sexo",sexo);
+        b.putInt("foto",fot);
+
+        i.putExtra("datos",b);
+        startActivity(i);
+    }
+
+
     public void onBackPressed(){
         finish();
         Intent i = new Intent(DetallePersona.this,Principal.class);
         startActivity(i);
     }
 }
+
+

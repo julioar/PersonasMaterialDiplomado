@@ -23,6 +23,14 @@ public class Metodos {
         }
         return false;
     }
+    public static void posicion(ArrayList<Persona>personas, Persona p){
+        int pos=0;
+        for (int i = 0; i < personas.size(); i++) {
+            if (personas.get(i).getCedula().equals(p.getCedula())){
+                pos =i;
+            }
+        }
+    }
 
 
 

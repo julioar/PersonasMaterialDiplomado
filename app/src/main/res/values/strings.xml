@@ -25,5 +25,6 @@
     <string name="no_eliminar_mensaje">No</string>
     <string name="no_vacio_error">Este campo no puede estar vacío</string>
     <string name="persona_existente_error">Ya existe una persona ingresada con esta cédula</string>
+    <string name="editar">Editar Persona</string>
 
 </resources>
